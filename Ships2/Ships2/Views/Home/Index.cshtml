@@ -1,0 +1,62 @@
+﻿@Model game;
+@using Ships2.Models;
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="col-md-12">
+                <h2>Gracz 1</h2>
+                <div class="player">
+                    @foreach (var x in Model.player1)
+                    {
+                        <div class="field">
+                            @if (x == field.Ship)
+                            {
+                                <img src="~/img/miss.jpg">
+                            }
+                            @if (x == field.Hit)
+                            {
+                                <img src="~/img/explosion.jpg">
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="col-md-12">
+                <h2>Gracz 2</h2>
+                <div class="player">
+                    @foreach (var x in Model.player2)
+                    {
+                        <div class="field">
+                            @if (x == field.Miss)
+                            {
+                                <img src="~/img/miss.jpg">
+                            }
+                            @if (x == field.Hit)
+                            {
+                                <img src="~/img/explosion.jpg">
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+   </div>
+<div class="row">
+    <div class="col-md-12">
+        <h2>
+            Tura gracza @Model.turn
+        </h2>
+        @using (Html.BeginForm())
+        {
+            <input type="text" name="txtX" />
+            <input type="text" name="txtY" />
+            <input type="submit" value="Strzał" />
+        }
+
+
+    </div>
+</div>
+
